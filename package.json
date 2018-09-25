@@ -4,12 +4,16 @@
   "description": "An asynchronous counter for Node.js and the browser",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava && npm run lint",
+    "lint": "xo"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/assister-ai/async-counter.git"
   },
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "counter",
     "async",
@@ -25,6 +29,17 @@
   },
   "homepage": "https://github.com/assister-ai/async-counter#readme",
   "devDependencies": {
-    "ava": "^0.25.0"
+    "ava": "^0.25.0",
+    "xo": "^0.23.0"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "xo": {
+    "space": 2,
+    "rules": {
+      "promise/param-names": 0,
+      "promise/prefer-await-to-then": 0
+    }
   }
 }

@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/assister-ai/async-counter/issues"
   },
-  "homepage": "https://github.com/assister-ai/async-counter#readme"
+  "homepage": "https://github.com/assister-ai/async-counter#readme",
+  "devDependencies": {
+    "ava": "^0.25.0"
+  }
 }

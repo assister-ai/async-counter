@@ -1,0 +1,27 @@
+{
+  "name": "async-counter",
+  "version": "0.0.1",
+  "description": "An asynchronous counter for Node.js and the browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/assister-ai/async-counter.git"
+  },
+  "keywords": [
+    "counter",
+    "async",
+    "await",
+    "asynchronous",
+    "node",
+    "browser"
+  ],
+  "author": "Keyvan Mir Mohammad Sadeghi <keyvan.m.sadeghi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/assister-ai/async-counter/issues"
+  },
+  "homepage": "https://github.com/assister-ai/async-counter#readme"
+}

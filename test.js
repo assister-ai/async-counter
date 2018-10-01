@@ -10,7 +10,7 @@ test('e2e', t => {
   };
 
   for (; countTimes > 0; countTimes--) {
-    setTimeout(() => counter.count().then(count => console.log(`${count} of ${counter.countTimes} times`)), countTimes * 500);
+    setTimeout(() => console.log(`${counter.count()} of ${counter.max} times`), countTimes * 500);
   }
 
   return awaitFinish();

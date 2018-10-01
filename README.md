@@ -14,17 +14,20 @@ npm i --save async-counter
 ### Usage
 
 ```js
+import asyncCounter from 'async-counter';
+
 const counter = asyncCounter(2);
 
 // Inside an async block
-await counter.finished;
-console.log('finished counting');
+const logWhenFinished = async () => {
+    await counter.finished;
+    console.log('finished counting');
+};
 
 // Somewhere else, async code
 setTimeout(() => counter.count(), 500);
 setTimeout(() => counter.count(), 1000);
-// counter.finished resolves the second time it is called
-
+// `counter.finished` resolves the second time `count` is called
 ```
 
 ### License

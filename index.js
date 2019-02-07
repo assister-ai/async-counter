@@ -1,23 +1,24 @@
-class AsyncCounter {
-  constructor(max, onCount = ({payload, max, current}) => {}) {
-    this.max = max;
-    this.finished = new Promise(resolve => {
-      let current = 0;
-      this.count = (payload = null) => {
-        if (++current >= this.max) {
-          resolve();
-        }
-        onCount({payload, current, max: this.max});
-        return current;
-      };
-    });
-  }
+function asyncCounter(max, {
+  onFinished = max => {},
+  onCount = ({payload, max, current}) => {}
+} = {}) {
+  const counter = {};
+  counter.finished = new Promise(resolve => {
+    let current = 0;
+    counter.count = payload => {
+      if (++current >= max) {
+        resolve(max);
+      }
+
+      onCount({payload, current, max});
+      return current;
+    };
+  });
+  counter.finished.then(onFinished);
+  return counter;
 }
 
-const asyncCounter = (max, onCount = ({payload, max, current}) => {}) => new AsyncCounter(max, onCount);
-
 module.exports = Object.assign(asyncCounter, {
-  AsyncCounter,
   asyncCounter,
   default: asyncCounter
 });

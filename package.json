@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/assister-ai/async-counter#readme",
   "devDependencies": {
-    "ava": "^0.25.0",
-    "xo": "^0.23.0"
+    "ava": "^1.2.1",
+    "xo": "^0.24.0"
   },
   "engines": {
     "node": ">=8"

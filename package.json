@@ -1,6 +1,6 @@
 {
   "name": "async-counter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An asynchronous counter for Node.js and the browser",
   "main": "index.js",
   "scripts": {

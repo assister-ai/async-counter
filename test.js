@@ -15,5 +15,5 @@ test('e2e', t => {
     setTimeout(() => counter.count({date: new Date()}), countTimes * 1000);
   }
 
-  return counter.finished;
+  return counter;
 });

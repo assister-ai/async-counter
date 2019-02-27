@@ -3,7 +3,7 @@
 
 # async-counter
 
-An asynchronous counter for Node.js and the browser
+An asynchronous counter with a sync interface
 
 ### Install
 
@@ -19,28 +19,34 @@ import asyncCounter from 'async-counter';
 const counter = asyncCounter(2);
 
 // Inside an async block
-const logWhenFinished = async () => {
-    await counter.finished;
-    console.log('finished counting');
-};
+const logWhenFinished = async () => console.log(`Finished counting to ${await counter}!`);
 
 // Somewhere else, async code
 setTimeout(() => counter.count(), 500);
 setTimeout(() => counter.count(), 1000);
-// `counter.finished` resolves the second time `count` is called
+// `counter` resolves the second time `counter.count` is called
+
+logWhenFinished();
+// Output after a second:
+// Finished counting to 2!
 ```
 
 ### API
 
 ```js
-let countTimes = 3;
-const counter = asyncCounter(countTimes, {
+const counter = asyncCounter(3, {
   onFinished: max => console.log(`Finished counting to ${max}!`),
   onCount: ({payload, max, current}) => console.log(`${payload.date.toString()}: ${current} of ${max} times`)
 });
-for (; countTimes > 0; countTimes--) {
-   setTimeout(() => counter.count({date: new Date()}), countTimes * 1000);
+
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => counter.count({date: new Date()}), i * 1000);
 }
+// Output:
+// Wed Feb 27 2019 04:40:05 GMT-0500 (Eastern Standard Time): 1 of 3 times
+// Wed Feb 27 2019 04:40:06 GMT-0500 (Eastern Standard Time): 2 of 3 times
+// Wed Feb 27 2019 04:40:07 GMT-0500 (Eastern Standard Time): 3 of 3 times
+// Finished counting to 3!
 ```
 
 ### License

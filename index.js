@@ -2,10 +2,10 @@ function asyncCounter(max, {
   onFinished = max => {},
   onCount = ({payload, max, current}) => {}
 } = {}) {
-  const counter = {};
-  counter.finished = new Promise(resolve => {
+  let count;
+  const counter = new Promise(resolve => {
     let current = 0;
-    counter.count = payload => {
+    count = payload => {
       if (++current >= max) {
         resolve(max);
       }
@@ -14,7 +14,8 @@ function asyncCounter(max, {
       return current;
     };
   });
-  counter.finished.then(onFinished);
+  counter.count = count;
+  counter.then(onFinished);
   return counter;
 }
 
